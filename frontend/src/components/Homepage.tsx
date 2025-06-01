@@ -9,21 +9,22 @@ const Hero: React.FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        let interval: NodeJS.Timeout;
-        
-        try {
-            if (isAutoSlide) {
-                interval = setInterval(() => {
-                    setCurrentImage((prevImage) => (prevImage + 1) % Images.length);
-                }, 3000);
-            }
-        } catch (err) {
-            setError("Failed to start slideshow");
-            console.error(err);
+    let interval: ReturnType<typeof setInterval>;
+    
+    try {
+        if (isAutoSlide) {
+            interval = setInterval(() => {
+                setCurrentImage((prevImage) => (prevImage + 1) % Images.length);
+            }, 3000);
         }
-        
-        return () => clearInterval(interval);
-    }, [isAutoSlide]);
+    } catch (err) {
+        setError("Failed to start slideshow");
+        console.error(err);
+    }
+    
+    return () => clearInterval(interval);
+}, [isAutoSlide]);
+
 
     useEffect(() => {
         const handleBackgroundChange = () => {
