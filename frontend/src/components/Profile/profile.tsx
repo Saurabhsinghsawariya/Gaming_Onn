@@ -31,7 +31,7 @@ const Profile: FC<ProfileProps> = ({ isOpen, onClose }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/users/profile', {
+      const response = await fetch('https://gaming-onn.onrender.com', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
