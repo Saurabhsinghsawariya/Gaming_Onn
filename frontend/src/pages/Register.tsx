@@ -23,7 +23,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/users/register', {
+      const response = await fetch('https://gaming-onn.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
