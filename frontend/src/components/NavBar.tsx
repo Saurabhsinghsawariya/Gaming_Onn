@@ -11,11 +11,7 @@ const NavBar: React.FC = () => {
   const navigate = useNavigate();
 
   // Dummy user data, replace with real user info as needed
-  const user = {
-    name: "John Doe",
-    email: "john@example.com",
-    avatar: ""
-  };
+
 
   // Navigation handlers
   const handleHomeClick = () => {
