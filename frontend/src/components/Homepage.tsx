@@ -42,16 +42,6 @@ const Hero: React.FC = () => {
         };
     }, []);
 
-    const handleHomeClick = () => {
-        try {
-            setIsAutoSlide(false);
-            setCurrentImage(Images.length - 1);
-        } catch (err) {
-            setError("Failed to handle home click");
-            console.error(err);
-        }
-    };
-
     const handleJoinUs = () => {
         try {
             navigate('/join-us');
