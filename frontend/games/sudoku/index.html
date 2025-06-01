@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SUDOKU</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="sudoku.js" defer></script>
+</head>
+<body class="container">
+    <div id="overlay"></div>
+    <div class="action-container">
+      <div id="score">
+        <h2 style="text-align: center;"> <span id="timer">0:00</span></h2>
+      </div>
+      <div class="actions" id="actions">
+        <div class="levels">
+          <select name="level" id="level">
+            <option value="1" selected>Easy</option>
+            <option value="2">Medium</option>
+            <option value="3">Hard</option>
+          </select>
+        </div>
+        <div class="newGame">
+          <button type="button" onclick="getBoard()">New game</button>
+        </div>
+        <div class="clearBoard">
+          <button id="clearButton" type="button" onclick="clearboard()" disabled>Clear Board</button>
+        </div>
+      </div>
+      <div class="submit">
+        <button id="submitButton" disabled type="button" onclick="check()"> Submit </button>
+      </div>
+    </div>
+
+    <div class="board-container">
+      <table id="grid">
+        <!-- ... your table rows and cells ... -->
+        <!-- (keep your existing table code here) -->
+      </table>
+</body>
+</html>

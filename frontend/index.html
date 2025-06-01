@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gaming</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f2f5;
+        padding: 40px;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        scroll-behavior: smooth; /* Enables smooth scrolling */
+      }
+
+      /* Smooth and Styled Scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px; /* Width of the scrollbar */
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #e0e0e0; /* Background of the scrollbar track */
+        border-radius: 10px; /* Rounded corners for the track */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #7b61ff; /* Color of the scrollbar thumb */
+        border-radius: 10px; /* Rounded corners for the thumb */
+        border: 2px solid #e0e0e0; /* Adds a border around the thumb */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #5a45d6; /* Darker color on hover */
+      }
+
+      ::-webkit-scrollbar-corner {
+        background: transparent; /* Makes the bottom-right corner transparent */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

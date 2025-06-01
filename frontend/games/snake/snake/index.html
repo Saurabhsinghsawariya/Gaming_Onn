@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        :root {
+            --primary: #EC4899;
+            --secondary: #7C3AED;
+            --accent: #10B981;
+            --background: #030712;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background: var(--background);
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #fff;
+        }
+
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0.98));
+            image-rendering: pixelated;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            pointer-events: none;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+        }
+
+        .overlay h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 20px rgba(236, 72, 153, 0.5);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        .overlay #score {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+            letter-spacing: 2px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px var(--primary),
+                           0 0 20px var(--primary),
+                           0 0 30px var(--secondary);
+            }
+            to {
+                text-shadow: 0 0 20px var(--primary),
+                           0 0 30px var(--primary),
+                           0 0 40px var(--secondary);
+            }
+        }
+
+        /* Game Over Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
+            z-index: 20;
+            text-align: center;
+        }
+
+        .modal h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .modal button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+        }
+
+        /* Start Button Container */
+        .start-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 30;
+            backdrop-filter: blur(5px);
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .start-button {
+            padding: 1.5rem 4rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 1rem;
+            cursor: pointer;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .start-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(236, 72, 153, 0.5);
+        }
+
+        .start-button:hover::before {
+            left: 100%;
+        }
+
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>Snake Game</h1>
+        <div id="score">Score: 0</div>
+    </div>
+    
+    <div class="modal" id="gameOverModal">
+        <h2>Game Over!</h2>
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+
+    <div class="start-container" id="startContainer">
+        <button class="start-button" onclick="startGame()">
+            Start Game
+        </button>
+    </div>
+
+    <canvas id="game"></canvas>
+    <script src="index.js"></script>
+</body>
+</html>

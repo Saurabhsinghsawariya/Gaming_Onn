@@ -1,0 +1,97 @@
+:root {
+    --primary: #00ff66;
+    --secondary: #0066ff;
+    --background: #030712;
+    --text-glow: rgba(0, 255, 102, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    overflow: hidden;
+    font-family: 'Pacifico', cursive;
+}
+
+.game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+}
+
+#myCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #000000, #1a1a1a);
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.score-display {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--primary);
+    font-size: 24px;
+    border-radius: 10px;
+    border: 2px solid var(--primary);
+    z-index: 100;
+    box-shadow: 0 0 20px var(--text-glow);
+}
+
+.restart-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--text-glow);
+}
+
+.restart-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--text-glow);
+}
+
+/* Game Over Modal */
+.game-over {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    border: 2px solid var(--primary);
+    z-index: 200;
+    box-shadow: 0 0 30px var(--text-glow);
+}
+
+.game-over h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

@@ -1,0 +1,44 @@
+                      sydney-events-app/
+│
+├── backend/
+│   ├── src/
+│   │   ├── models/
+│   │   │   ├── Event.ts
+│   │   │   └── Email.ts
+│   │   ├── routes/
+│   │   │   └── events.ts
+│   │   ├── scraper/
+│   │   │   ├── index.ts       # scraping logic
+│   │   ├── scheduler/
+│   │   │   └── index.ts       # node-cron scheduler
+│   │   ├── controllers/
+│   │   │   └── eventsController.ts
+│   │   ├── utils/
+│   │   │   └── validateEmail.ts
+│   │   ├── config/
+│   │   │   └── db.ts          # MongoDB connection
+│   │   └── server.ts
+│   ├── .env
+│   ├── package.json
+│   ├── tsconfig.json
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── EventList.tsx
+│   │   ├── pages/
+│   │   │   └── Home.tsx
+│   │   ├── api/
+│   │   │   └── index.ts       # axios API functions
+│   │   ├── styles/
+│   │   │   └── index.css
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   ├── tailwind.config.js
+│   ├── postcss.config.js
+│   ├── vite.config.ts
+│   ├── package.json
+│   └── tsconfig.json
+│
+└── README.md

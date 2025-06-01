@@ -1,0 +1,120 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: monospace;
+    font-size: 1.25em;
+    background: linear-gradient(to bottom, #87CEEB, #09315a); /* Sky gradient */
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Game Container */
+.game-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Game Area */
+.game {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('https://i.imgur.com/3e7ZK8T.png') repeat-x; /* Road background */
+    background-size: cover;
+    animation: moveRoad 3s linear infinite;
+}
+
+/* Bike */
+.bike {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 60px;
+    height: 60px;
+    background: url('https://i.imgur.com/5z6p3Wk.png') no-repeat center;
+    background-size: contain;
+}
+
+/* Obstacle */
+.obstacle {
+    position: absolute;
+    bottom: 50px;
+    right: -50px;
+    width: 60px;
+    height: 60px;
+    background: url('https://i.imgur.com/8z5V9vT.png') no-repeat center;
+    background-size: contain;
+    animation: moveObstacle 2s linear infinite;
+}
+
+/* Clouds */
+.cloud {
+    position: absolute;
+    top: 10%;
+    width: 200px;
+    height: 100px;
+    background: url('https://i.imgur.com/3yG7Q2I.png') no-repeat center;
+    background-size: contain;
+    animation: moveClouds 10s linear infinite;
+}
+
+.cloud:nth-child(2) {
+    top: 20%;
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.cloud:nth-child(3) {
+    top: 15%;
+    left: 60%;
+    animation-delay: 4s;
+}
+
+/* Scoreboard */
+.scoreboard {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes moveRoad {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100% 0;
+    }
+}
+
+@keyframes moveObstacle {
+    from {
+        right: -50px;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes moveClouds {
+    from {
+        left: 100%;
+    }
+    to {
+        left: -200px;
+    }
+}
