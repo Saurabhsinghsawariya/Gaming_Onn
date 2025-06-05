@@ -1,0 +1,6 @@
+services:
+  - type: static
+    name: gaming-website-frontend
+    env: static
+    buildCommand: npm run build
+    publishPath: dist
